@@ -6,23 +6,23 @@ Europe PMC Annotations API provides text mining annotations contained in abstrac
 The code has been written using JAVA 8. Maven has been chosen as development tool. The RESTful service  has been built using [Spring Boot][2]. The artifact produced by the project is a war file ready to be deployed on a Tomcat 8 container. 
 The Europe PMC Annotations API is reading the data from a MongoDB database. The dependency that it is managing the mongoDB interaction is
 
-{% highlight xml %}
-<dependency>
-       <groupId>uk.ac.ebi.literature</groupId>
-	  <artifactId>mongodb_layer</artifactId>
-	  <version>3.2.0</version>
-	  <exclusions>
-		  <exclusion> 
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-log4j12</artifactId>
-		  </exclusion>
-		  <exclusion> 
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		  </exclusion>
-	</exclusions> 
-</dependency>
-{% highlight xml %}
+<pre>
+&lt;dependency&rt;
+       &lt;groupId&rt;uk.ac.ebi.literature&lt;/groupId&rt;
+	  &lt;artifactId&rt;mongodb_layer&lt;/artifactId&rt;
+	  &lt;version&rt;3.2.0&lt;/version&rt;
+	  &lt;exclusions&rt;
+		  &lt;exclusion&rt; 
+		    &lt;groupId&rt;org.slf4j&lt;/groupId&rt;
+		    &lt;artifactId&rt;slf4j-log4j12&lt;/artifactId&rt;
+		  &lt;/exclusion&rt;
+		  &lt;exclusion&rt; 
+		    &lt;groupId&rt;log4j&lt;/groupId&rt;
+		    &lt;artifactId&rt;log4j&lt;/artifactId&rt;
+		  &lt;/exclusion&rt;
+	&lt;/exclusions&rt; 
+&lt;/dependency&rt;
+</pre>
 
 In order to get this library it is necessary to download the [MongoDB Layer][3] component. 
 The mongoDB database from where to read the data is specified in the property mongoDBUrl of the relative property file inside the folder src/main/resources. You can determine how to choose the property file to load in the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is also the entry point of the entire application. The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific mongoDB server address, see details of the MongoDB Layer component ReadME file.
