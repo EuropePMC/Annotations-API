@@ -25,10 +25,10 @@ The Europe PMC Annotations API is reading the data from a MongoDB database. The 
 &lt;/dependency&gt;
 </pre>
 
-In order to get this library it is necessary to download the [MongoDB Layer][3] component. 
-The MongoDB database from where to read the data is specified in the property mongoDBUrl of the appropriate property file inside the folder src/main/resources. You can determine how to choose the property file to load in the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is the entry point of the entire application as well. The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific MongoDB server address, see details of the MongoDB Layer component README file.
+The MongoDB Layer component can be downloaded [here][3]. 
+The MongoDB database from where to read the data is specified in the property mongoDBUrl of the appropriate property file inside the folder src/main/resources. It is possible to determine which  property file to load inside the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is the entry point of the entire application as well. The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific MongoDB server address, see details of the MongoDB Layer component README file.
 
-The Europe PMC Annotations API is expecting that the documents inside the MongoDB database collection annotationsApi will have the following structure
+The Europe PMC Annotations API is expecting that the documents inside the MongoDB database collection annotationsApi (value of the property collectionName) have the following structure
 
 <pre>
 {
