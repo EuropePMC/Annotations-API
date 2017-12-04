@@ -21,7 +21,7 @@ The Europe PMC Annotations API is reading the data from a MongoDB database. The 
 		    <artifactId>log4j</artifactId>
 		  </exclusion>
 	</exclusions> 
-    </dependency>
+</dependency>
 {% highlight xml %}
 
 In order to get this library it is necessary to download the [MongoDB Layer][3] component. 
