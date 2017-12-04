@@ -160,7 +160,7 @@ The Europe PMC Annotations API is expecting that the documents inside the MongoD
 
 </pre>
 
- The API HTML documentation is generated using [Swagger][4]
+ The API HTML documentation is generated using [Swagger][4].
 
 [1]: https://www.w3.org/TR/annotation-model/
 [2]: http://spring.io/guides/gs/rest-service/
