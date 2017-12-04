@@ -22,7 +22,7 @@ The Europe PMC Annotations API is reading the data from a MongoDB database. The 
 		  </exclusion>
 	</exclusions> 
 </dependency>
-{% endhighlight%}
+{% endhighlight %}
 
 In order to get this library it is necessary to download the [MongoDB Layer][3] component. 
 The mongoDB database from where to read the data is specified in the property mongoDBUrl of the relative property file inside the folder src/main/resources. You can determine how to choose the property file to load in the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is also the entry point of the entire application. The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific mongoDB server address, see details of the MongoDB Layer component ReadME file.
