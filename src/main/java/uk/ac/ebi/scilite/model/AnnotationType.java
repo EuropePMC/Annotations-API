@@ -18,8 +18,6 @@ public enum AnnotationType {
 	GENE_DISEASE("Gene Disease", AnnotationTypeApi.GENE_DISEASE.getLabel(), "Gene Disease Relationship"),
 	PPI("Protein Interaction", AnnotationTypeApi.PPI.getLabel(), "Protein Interaction"),
 	BIOLOGICAL_EVENT("Biological Event", AnnotationTypeApi.BIOLOGICAL_EVENT.getLabel(), "Biological Event"),
-	GENETIC_VARIATION("Gene Mutations", AnnotationTypeApi.GENETIC_VARIATION.getLabel(), "Gene Mutations"),
-	TRANSCRIPTION_FACTOR_TARGET_GENE("TF_TG", AnnotationTypeApi.TRANSCRIPTION_FACTOR_TARGET_GENE.getLabel(), "Transcription factor - Target gene"),
 	UNSPECIFIED("UNSPECIFIED", "", "");
 	
 	private String inputParameter;

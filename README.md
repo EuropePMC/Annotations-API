@@ -3,8 +3,8 @@ This project contains the source code used to build the [Europe PMC Annotations 
 
 Europe PMC Annotations API provides text mining annotations contained in abstracts and open access full text articles, using the [W3C Open Annotation Data Model][1]
 
-The code has been written using JAVA 8. Maven has been chosen as development tool. The RESTful service  has been built using [Spring Boot][2]. The artifact produced by the project is a war file ready to be deployed on a Tomcat 8 container. 
-The Europe PMC Annotations API is reading the data from a MongoDB database. The dependency that it is managing the mongoDB interaction is
+The code has been written using JAVA 8. The development tool used is [Maven][6]. The RESTful service  has been built using [Spring Boot][2]. The artifact produced by the project is a war file ready to be deployed on a Tomcat 8 container.<br/>
+The Europe PMC Annotations API is reading the data from a MongoDB database. The component that it is managing the MongoDB interaction is described by the following dependency in the POM file
 
 <pre>
 &lt;dependency&gt;
@@ -25,8 +25,8 @@ The Europe PMC Annotations API is reading the data from a MongoDB database. The 
 </pre>
 
 In order to get this library it is necessary to download the [MongoDB Layer][3] component. 
-The mongoDB database from where to read the data is specified in the property mongoDBUrl of the relative property file inside the folder src/main/resources. You can determine how to choose the property file to load in the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is also the entry point of the entire application. The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific mongoDB server address, see details of the MongoDB Layer component ReadME file.
-The Europe PMC Annotations API is expecting that the documents inside the mongoDB database collection annotationsApi will have the following structure
+The MongoDB database from where to read the data is specified in the property mongoDBUrl of the appropriate property file inside the folder src/main/resources. You can determine how to choose the property file to load in the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is the entry point of the entire application as well. The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific MongoDB server address, see details of the MongoDB Layer component README file.
+<br/>The Europe PMC Annotations API is expecting that the documents inside the MongoDB database collection annotationsApi will have the following structure
 
 <pre>
 {
@@ -154,11 +154,12 @@ The Europe PMC Annotations API is expecting that the documents inside the mongoD
 
 </pre>
 
-[Swagger][4] is used to generate the API HTML documentation
+ The API HTML documentation is generated using [Swagger][4]
 
 [1]: https://www.w3.org/TR/annotation-model/
 [2]: http://spring.io/guides/gs/rest-service/
 [3]: https://github.com/EuropePMC/MongoDB-Layer
 [4]: https://swagger.io/
 [5]: https://europepmc.org/AnnotationsApi
+[6]: https://maven.apache.org/
 

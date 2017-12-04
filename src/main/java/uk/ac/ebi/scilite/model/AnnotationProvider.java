@@ -14,11 +14,9 @@ public enum AnnotationProvider {
 	EUROPEPMC("Europe PMC", AnnotationProviderApi.EUROPEPMC.getLabel(), "Europe PMC", AnnotationJsonLDNamedEntity.class), 
 	GENERIF("HES-SO_SIB", AnnotationProviderApi.GENERIF.getLabel(), "HES-SO / SIB Text Mining for Elixir", AnnotationJsonLDSentenceNoRelationship.class), 
 	OPEN_TARGET("OpenTargets", AnnotationProviderApi.OPEN_TARGET.getLabel(), "Open Targets Platform", AnnotationJsonLDSentenceRelationship.class), 
-	NACTEM("NaCTeM", AnnotationProviderApi.NACTEM.getLabel(), "National Centre for Text Mining (NaCTeM)", AnnotationJsonLDSentenceNoRelationship.class), 
-	NCBI("NCBI_PubTator", AnnotationProviderApi.NCBI.getLabel(), "NCBI PubTator", AnnotationJsonLDNamedEntity.class), 
+	NACTEM("NaCTeM", AnnotationProviderApi.NACTEM.getLabel(), "National Centre for Text Mining (NaCTeM)", AnnotationJsonLDSentenceNoRelationship.class),
 	INTACT("IntAct", AnnotationProviderApi.INTACT.getLabel(), "IntAct", AnnotationJsonLDSentenceNoRelationship.class), 
 	DISGENET("DisGeNET", AnnotationProviderApi.DISGENET.getLabel(), "DisGeNET", AnnotationJsonLDSentenceRelationship.class), 
-	GRECO("BSC/NTNU", AnnotationProviderApi.GRECO.getLabel(), "NTNU/CNIO/BSC from text-mining", AnnotationJsonLDSentenceRelationship.class),
 	UNSPECIFIED("UNSPECIFIED", "", "", AnnotationJsonLDNamedEntity.class);
 
 	
