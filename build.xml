@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="scilite_ws" default="war" basedir="."  xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+	<property file="build.properties" />
+	
+	<property name="source-directory" value="src/main" />
+	<property name="tomcat-path" value="${appserver}/webapps"/>
+	<property name="tomcat-lib" value="${appserver}/lib"/>
+	<tstamp prefix="build-info">
+		<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
+		<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
+		<format property="year-month-day" pattern="yyyy-MM-dd" locale="en" />
+	</tstamp>
+
+	<path id="catalina-ant-classpath">  
+	        <!-- We need the Catalina jars for Tomcat -->  
+	        <!--  * for other app servers - check the docs -->  
+	        <fileset dir="${tomcat-lib}">  
+	            <include name="catalina-ant.jar"/>  
+	        </fileset>  
+	 </path>  
+	 
+	 
+	<path id="maven-classpath">  
+	        <!-- We need the Catalina jars for Tomcat -->  
+	        <!--  * for other app servers - check the docs -->  
+	        <fileset dir="${tomcat-lib}">  
+	            <include name="maven-ant-tasks.jar"/>  
+	        </fileset>  
+	 </path>  
+	
+	<typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+		           uri="antlib:org.apache.maven.artifact.ant"
+		           classpathref="maven-classpath" />
+	  
+	<taskdef name="start" classname="org.apache.catalina.ant.StartTask">
+		<classpath refid="catalina-ant-classpath"/>  
+	</taskdef>
+	<taskdef name="stop" classname="org.apache.catalina.ant.StopTask" >
+		<classpath refid="catalina-ant-classpath"/>  
+	</taskdef>
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" >
+		<classpath refid="catalina-ant-classpath"/>  
+	</taskdef>
+	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask">
+		<classpath refid="catalina-ant-classpath"/>  
+	</taskdef>
+   
+	
+	<artifact:pom id="mypom" file="pom.xml" />
+	<target name="war" depends="">
+	     <echo>The version of the project is ${mypom.version}</echo>
+	     <echo>The artifact name of the projet is ${mypom.artifactId}</echo>
+		<artifact:mvn mavenHome="${maven_home}" fork="true">
+			<arg value="clean"/>
+			<arg value="install"/>
+			<arg value="-Dmaven.test.skip=true"/>
+		</artifact:mvn>
+	</target>
+
+   <property name="war-file-name" value="${mypom.artifactId}-${mypom.version}.war" />
+
+	<target name="copy_local_war" depends="" description="upload war file to server">
+		<delete file="${tomcat-path}/${final_war_name}" />
+		<delete file="${tomcat-path}/${war-file-name}" />
+		<copy todir="${tomcat-path}">
+			<fileset file="${dest_maven}/${war-file-name}" />
+		</copy>
+		<rename src="${tomcat-path}/${war-file-name}" dest="${tomcat-path}/${final_war_name}"/> 
+	</target>
+	
+	<target name="copy_remote_war" depends="" description="upload war file for remote server">
+			<delete file="${network_path}/${final_war_name}" />
+			<delete file="${network_path}/${war-file-name}" />
+			<copy todir="${network_path}">
+				<fileset file="${dest_maven}/${war-file-name}" />
+			</copy>
+			<rename src="${network_path}/${war-file-name}" dest="${network_path}/${final_war_name}"/> 
+	</target>
+	
+	
+	
+	<target name="install_war">
+		<antcall target="war"/>
+		 <antcall target="copy_local_war"/>
+		<antcall target="copy_remote_war"/>
+	</target>
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <RollingFile name="Rolling" fileName="${sys:catalina.base}/logs/${sys:tomcat.hostname:-}/scilite_ws.log" immediateFlush="true" append="true" filePattern="${sys:catalina.base}/logs/${sys:tomcat.hostname:-}/scilite_ws-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern=" %d %p %C{1.} [%t] %m%n"/>
+            <Policies>
+            	<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+			</Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Rolling" />
+        </Root>
+    </Loggers>
+</Configuration>
