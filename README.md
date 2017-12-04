@@ -1,4 +1,4 @@
-# Annotations-API
+# EuropePMC Annotations API
 This project contains the source code used to build the [Europe PMC Annotations API RESTful service][5]
 
 Europe PMC Annotations API provides text mining annotations contained in abstracts and open access full text articles, using the [W3C Open Annotation Data Model][1]
