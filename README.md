@@ -5,7 +5,7 @@ Europe PMC Annotations API provides text mining annotations contained in abstrac
 
 The code has been written using JAVA 8. The development tool used is [Maven][6]. The RESTful service  has been built using [Spring Boot][2]. The artifact produced by the project is a war file ready to be deployed on a Tomcat 8 container.
 
-The Europe PMC Annotations API is reading the data from a MongoDB database. The component that it is managing the MongoDB interaction is described by the following dependency in the POM file
+The Europe PMC Annotations API is reading the data from a MongoDB database. The component that it is managing the interaction with the MongoDB database is described by the following dependency in the POM file
 
 <pre>
 &lt;dependency&gt;
@@ -26,9 +26,13 @@ The Europe PMC Annotations API is reading the data from a MongoDB database. The 
 </pre>
 
 The MongoDB Layer component can be downloaded [here][3]. 
-The MongoDB database from where to read the data is specified in the property mongoDBUrl of the appropriate property file inside the folder src/main/resources. It is possible to determine which  property file to load inside the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is the entry point of the entire application as well. The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific MongoDB server address, see details of the MongoDB Layer component README file.
+The MongoDB database from where to read the data is specified by the value of the property mongoDBUrl inside the appropriate property file below the folder src/main/resources. It is possible to determine which is the appropriate property file to load inside the class uk.ac.ebi.scilite.controller.AnnotationsAPIWebApplication. This class is the entry point of the entire application as well. 
 
-The Europe PMC Annotations API is expecting that the documents inside the MongoDB database collection annotationsApi (value of the property collectionName) have the following structure
+The value of the property mongoDBUrl will need to reflect one of the values of the enum MONGODB_URL defined in the class uk.ac.ebi.literature.mongodb.dao.ICrudDAO of the MongoDB Layer component. To see how this value will be translated to a specific MongoDB server address, see details of the MongoDB Layer component README file.
+
+The name of the collection inside the MOngoDB database from where to read the data is specified by the value of the property collectionName.
+
+The Europe PMC Annotations API is expecting that the documents inside the MongoDB database collection have the following structure:
 
 <pre>
 {
